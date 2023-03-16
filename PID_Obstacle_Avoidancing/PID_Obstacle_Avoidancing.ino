@@ -211,31 +211,18 @@ void compareDistance() {
   } else {
     avoid(true);
   }
-
-  /* if ((right_Distance > left_Distance) && right_Distance > 20) {
-    Serial.print("Turn Right!!!!!!!!");
-    avoid(true);
-
-  } else if ((right_Distance < left_Distance) && left_Distance > 20) {
-    Serial.print("Turn Left!!!!!!!!");
-    avoid(false);
-
-  } else {
-    avoid(true);
-  } */
 }
 
-
-double kalman(double U){
+double kalman(double U) {
   static const double R = 40;
   static const double H = 1.00;
   static double Q = 10;
   static double P = 0;
   static double U_hat = 0;
   static double K = 0;
-  K = P*H/(H*P*H+R);
-  U_hat += + K*(U-H*U_hat);
-  P = (1-K*H)*P+Q;
+  K = P * H / (H * P * H + R);
+  U_hat += +K * (U - H * U_hat);
+  P = (1 - K * H) * P + Q;
   return U_hat;
 }
 
@@ -313,10 +300,10 @@ void avoid(int side) {
 void stop(int time_stop) {
   analogWrite(ena, 0);
   analogWrite(enb, 0);
-  digitalWrite(in1, LOW);  //Left Motor backword Pin
-  digitalWrite(in2, LOW);  //Left Motor forword Pin
-  digitalWrite(in3, LOW);  //Right Motor forword Pin
-  digitalWrite(in4, LOW);  //Right Motor backword Pin
+  digitalWrite(in1, LOW); 
+  digitalWrite(in2, LOW); 
+  digitalWrite(in3, LOW); 
+  digitalWrite(in4, LOW); 
   delay(time_stop);
 }
 void go_Forward(int delay_time) {
@@ -335,7 +322,7 @@ void go_BackWard(int delay_time) {
   digitalWrite(in2, HIGH);
   digitalWrite(in3, HIGH);
   digitalWrite(in4, LOW);
-  delay(delay_time);
+  delay(delay_time);                                                          
 }
 void turnLeft(int delay_time) {
   analogWrite(ena, turnSpeed);
