@@ -62,8 +62,12 @@ void loop() {
     stop(300);
     check();
   }
-  Serial.print(distance);
-  Serial.println("cm");
+
+  Serial.print("Chua loc: ");
+  Serial.println(Distance); 
+  
+  Serial.print("Da loc: ");
+  Serial.println(distance); 
 }
 
 void servoPulse(int pin, int angle) {
@@ -136,7 +140,7 @@ void motor() {
 }
 
 int get_distance(int trig, int echo) {
-  int distance, duration;
+  double distance, duration;
   digitalWrite(trig, 0);
   delayMicroseconds(2);
   digitalWrite(trig, 1);
